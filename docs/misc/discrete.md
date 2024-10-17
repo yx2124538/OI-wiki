@@ -52,7 +52,7 @@ for (int i = 0; i < n; ++i)
 
 ### 方法二
 
-根据题目要求，有时候会把相同的元素跟据输入顺序离散化为不同的数据。
+根据题目要求，有时候会把相同的元素根据输入顺序离散化为不同的数据。
 
 此时再用 `std::lower_bound()` 函数实现就有些困难了，需要换一种思路：
 
@@ -71,9 +71,9 @@ struct Data {
       return idx < o.idx;  // 当值相同时，先出现的元素离散化后的值更小
     return val < o.val;
   }
-} tmp[maxn];  // 也可以使用 std::pair
+} tmp[MAXN];  // 也可以使用 std::pair
 
-for (int i = 1; i <= n; ++i) tmp[i] = (Data){i, arr[i]};
+for (int i = 1; i <= n; ++i) tmp[i] = Data{i, arr[i]};
 std::sort(tmp + 1, tmp + n + 1);
 for (int i = 1; i <= n; ++i) arr[tmp[i].idx] = i;
 ```
